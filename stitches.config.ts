@@ -25,12 +25,13 @@ export const { globalCss, styled, getCssText, theme } = createStitches({
       medium: '500',
       semi: '600',
       bold: '700',
+      extraBold: '800',
     },
     letterSpacings: {
       default: '-0.035em',
     },
     radii: {
-      xs: '2px',
+      xs: '4px',
       default: '12px',
       rounded: '16px',
     },
