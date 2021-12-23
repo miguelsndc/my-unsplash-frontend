@@ -30,8 +30,9 @@ export const { globalCss, styled, getCssText, theme } = createStitches({
       default: '-0.035em',
     },
     radii: {
-      default: 12,
-      rounded: 16,
+      xs: '2px',
+      default: '12px',
+      rounded: '16px',
     },
     shadows: {
       danger: '0px 1px 6px rgba(235, 87, 87, 0.1)',
