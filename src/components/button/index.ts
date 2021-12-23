@@ -10,6 +10,11 @@ export const Button = styled('button', {
   fontWeight: '$medium',
   cursor: 'pointer',
   fontSize: '$md',
+  transition: 'filter .2s',
+
+  '&:hover': {
+    filter: 'brightness(0.9)',
+  },
 
   variants: {
     color: {
