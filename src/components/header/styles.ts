@@ -1,7 +1,7 @@
 import { styled } from 'stitches/config';
 
 export const Container = styled('header', {
-  width: '75%',
+  width: '90vw',
   maxWidth: 'calc(1368px + 1rem)',
   padding: '1rem',
   margin: '0 auto',
@@ -112,4 +112,39 @@ export const ButtonWrapper = styled('div', {
   alignItems: 'center',
   justifyContent: 'flex-end',
   gap: '1rem',
+});
+
+export const ErrorMessage = styled('span', {
+  display: 'block',
+  color: '$red1',
+  marginTop: '0.45rem',
+  fontSize: '$sm',
+});
+
+export const GithubLink = styled('a', {
+  textDecoration: 'none',
+  textTransform: 'capitalize',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem',
+  background: '$gray1',
+  color: '#fff',
+  fontWeight: '$medium',
+  borderRadius: '$default',
+  padding: '0.75rem 1.5rem',
+  transition: 'background .2s',
+  '&:hover': {
+    background: '$black',
+  },
+});
+
+export const Profile = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.75rem',
+  img: {
+    width: '3rem',
+    height: '3rem',
+    borderRadius: '50%',
+  },
 });
