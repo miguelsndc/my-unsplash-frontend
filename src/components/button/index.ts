@@ -16,6 +16,12 @@ export const Button = styled('button', {
     filter: 'brightness(0.95)',
   },
 
+  '&:disabled': {
+    opacity: 0.5,
+    pointerEvents: 'none',
+    cursor: 'auto',
+  },
+
   variants: {
     color: {
       green: {
