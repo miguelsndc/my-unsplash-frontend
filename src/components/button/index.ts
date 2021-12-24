@@ -13,7 +13,7 @@ export const Button = styled('button', {
   transition: 'filter .2s',
 
   '&:hover': {
-    filter: 'brightness(0.9)',
+    filter: 'brightness(0.95)',
   },
 
   variants: {
@@ -25,6 +25,10 @@ export const Button = styled('button', {
       red: {
         backgroundColor: '$red1',
         boxShadow: '$danger',
+      },
+      gray: {
+        backgroundColor: '#fff',
+        color: '$gray3',
       },
     },
   },
