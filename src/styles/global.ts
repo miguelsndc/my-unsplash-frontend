@@ -11,6 +11,6 @@ export const globalStyles = globalCss({
     fontFamily: '$default',
     fontWeight: '$regular',
     letterSpacing: '$default',
-    overflow: 'hidden',
+    overflowX: 'hidden',
   },
 });
