@@ -37,6 +37,16 @@ export const Button = styled('button', {
         color: '$gray3',
       },
     },
+
+    rounded: {
+      true: {
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '0.45rem',
+      },
+    },
   },
 
   defaultVariants: {
