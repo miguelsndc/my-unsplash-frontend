@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
 import { Button } from '../button';
+import { Dialog } from '../dialog';
 import {
   Container,
   InputContainer,
@@ -7,12 +9,53 @@ import {
   LogoContent,
   LogoHead,
   LogoBody,
+  Field,
   Content,
+  ButtonWrapper,
 } from './styles';
 
 export const Header = () => {
+  const [dialogOpened, setDialogOpened] = useState(false);
+
+  const handleOpenDialog = () => setDialogOpened(true);
+
+  const handleCloseDialog = () => setDialogOpened(false);
+
   return (
     <Container>
+      <Dialog
+        title='Add new photo'
+        description='Add a new photo to your collection'
+        opened={dialogOpened}
+        onOpenedChange={setDialogOpened}
+      >
+        <form>
+          <Field>
+            <label htmlFor='label'>Label</label>
+            <input
+              type='text'
+              name='label'
+              id='label'
+              placeholder='Suspendisse elit massa'
+            />
+          </Field>
+          <Field>
+            <label htmlFor='photoUrl'>Photo URL</label>
+            <input
+              type='url'
+              name='photoUrl'
+              id='photoUrl'
+              placeholder='https://images.unsplash.com/photo-1837109784317341904714'
+            />
+          </Field>
+          <ButtonWrapper>
+            <Button color='gray' type='button' onClick={handleCloseDialog}>
+              Cancel
+            </Button>
+            <Button>Submit</Button>
+          </ButtonWrapper>
+        </form>
+      </Dialog>
       <Content>
         <Logo>
           <LogoContent>
@@ -34,7 +77,7 @@ export const Header = () => {
           />
         </InputContainer>
       </Content>
-      <Button>Add photo</Button>
+      <Button onClick={handleOpenDialog}>Add photo</Button>
     </Container>
   );
 };

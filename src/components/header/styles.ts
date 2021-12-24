@@ -80,3 +80,36 @@ export const InputContainer = styled('div', {
     marginRight: '0.85rem',
   },
 });
+
+export const Field = styled('div', {
+  '& + &': {
+    marginTop: '0.75rem',
+  },
+  label: {
+    display: 'block',
+    fontWeight: '$medium',
+    fontSize: '$md',
+    marginBottom: '0.5rem',
+  },
+  input: {
+    background: 'none',
+    fontFamily: '$default',
+    fontSize: '$md',
+    padding: '0.9rem 1.15rem',
+    borderRadius: '$default',
+    border: '1px solid $gray2',
+    display: 'block',
+    width: '100%',
+    '&::placeholder': {
+      color: '$gray3',
+    },
+  },
+});
+
+export const ButtonWrapper = styled('div', {
+  marginTop: '1.25rem',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  gap: '1rem',
+});
