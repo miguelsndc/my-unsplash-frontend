@@ -91,19 +91,6 @@ export const Field = styled('div', {
     fontSize: '$md',
     marginBottom: '0.5rem',
   },
-  input: {
-    background: 'none',
-    fontFamily: '$default',
-    fontSize: '$md',
-    padding: '0.9rem 1.15rem',
-    borderRadius: '$default',
-    border: '1px solid $gray2',
-    display: 'block',
-    width: '100%',
-    '&::placeholder': {
-      color: '$gray3',
-    },
-  },
 });
 
 export const ButtonWrapper = styled('div', {
@@ -143,8 +130,6 @@ export const Profile = styled('div', {
   alignItems: 'center',
   gap: '0.75rem',
   img: {
-    width: '3rem',
-    height: '3rem',
     borderRadius: '50%',
   },
 });

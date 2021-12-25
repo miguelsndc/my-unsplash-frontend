@@ -7,6 +7,7 @@ import { BsGithub } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 import { Button } from '../button';
 import { Dialog } from '../dialog';
+import { Input } from '../input';
 import {
   Container,
   InputContainer,
@@ -115,7 +116,7 @@ export const Header = () => {
           )}
           <Field>
             <label htmlFor='label'>Label</label>
-            <input
+            <Input
               type='text'
               id='label'
               placeholder='Suspendisse elit massa'
@@ -127,7 +128,7 @@ export const Header = () => {
           </Field>
           <Field>
             <label htmlFor='photoUrl'>Photo URL</label>
-            <input
+            <Input
               type='url'
               id='photoUrl'
               placeholder='https://images.unsplash.com/photo-1837109784317341904714'
@@ -172,7 +173,7 @@ export const Header = () => {
             <IoMdAdd size={24} />
           </Button>
 
-          <Image src={user.photoUrl} alt={user.name} width={128} height={128} />
+          <Image src={user.photoUrl} alt={user.name} width={56} height={56} />
         </Profile>
       ) : (
         <GithubLink href={signInUrl}>
