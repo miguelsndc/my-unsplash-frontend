@@ -35,6 +35,7 @@ const StyledContent = styled(DialogPrimitive.Content, {
   transform: 'translate(-50%, -50%)',
   width: '90vw',
   maxWidth: 600,
+  zIndex: 9,
   maxHeight: '85vh',
   padding: '1.25rem 1.75rem',
   '&:focus': { outline: 'none' },
