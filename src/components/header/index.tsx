@@ -1,9 +1,10 @@
+import Image from 'next/image';
 import { useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { RegisterOptions, useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import { IoMdSearch, IoMdAdd } from 'react-icons/io';
 import { BsGithub } from 'react-icons/bs';
+import toast from 'react-hot-toast';
 import { Button } from '../button';
 import { Dialog } from '../dialog';
 import {
@@ -21,7 +22,7 @@ import {
   GithubLink,
 } from './styles';
 import { api } from 'src/services/api';
-import { userState, signInUrl, User } from 'src/atoms/auth';
+import { userState, signInUrl } from 'src/atoms/auth';
 import { postsState } from 'src/atoms/posts';
 
 type PhotoFormData = {
@@ -38,7 +39,7 @@ export type Post = {
 };
 
 class PhotoFormValidation {
-  static label(required: boolean = false): RegisterOptions {
+  static label(required = false): RegisterOptions {
     return {
       required: {
         value: required,
@@ -51,7 +52,7 @@ class PhotoFormValidation {
     };
   }
 
-  static photoUrl(required: boolean = false): RegisterOptions {
+  static photoUrl(required = false): RegisterOptions {
     return {
       required: {
         value: required,
@@ -109,6 +110,9 @@ export const Header = () => {
         onOpenedChange={setDialogOpened}
       >
         <form onSubmit={handleSubmit(handleNewPhoto)}>
+          {error && (
+            <ErrorMessage css={{ margin: '1rem 0' }}>{error}</ErrorMessage>
+          )}
           <Field>
             <label htmlFor='label'>Label</label>
             <input
@@ -168,7 +172,7 @@ export const Header = () => {
             <IoMdAdd size={24} />
           </Button>
 
-          <img src={user.photoUrl} alt={user.name} />
+          <Image src={user.photoUrl} alt={user.name} width={128} height={128} />
         </Profile>
       ) : (
         <GithubLink href={signInUrl}>

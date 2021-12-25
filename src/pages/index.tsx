@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { User, userState } from 'src/atoms/auth';
 import { postsState } from 'src/atoms/posts';
@@ -17,32 +17,32 @@ const Home: NextPage = () => {
   const setUser = useSetRecoilState(userState);
 
   useEffect(() => {
-    api.get<Post[]>('/posts?page=2').then(({ data }) => {
+    api.get<Post[]>('/posts').then(({ data }) => {
       setPosts(data);
     });
-  }, []);
-
-  const signIn = async (gitCode: string) => {
-    const { data } = await api.post<AuthenticationResponse>(
-      '/users/authenticate',
-      {
-        code: gitCode,
-      }
-    );
-
-    const { token, user } = data;
-
-    localStorage.setItem('@miguelsndc/my-unsplash:token', token);
-
-    api.defaults.headers.common.authorization = `Bearer ${token}`;
-
-    setUser(user);
-  };
+  }, [setPosts]);
 
   useEffect(() => {
     const url = window.location.href;
 
     const hasGithubCode = url.includes('?code=');
+
+    const signIn = async (gitCode: string) => {
+      const { data } = await api.post<AuthenticationResponse>(
+        '/users/authenticate',
+        {
+          code: gitCode,
+        }
+      );
+
+      const { token, user } = data;
+
+      localStorage.setItem('@miguelsndc/my-unsplash:token', token);
+
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+
+      setUser(user);
+    };
 
     if (hasGithubCode) {
       const [urlWithoutCode, code] = url.split('?code=');
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
 
       signIn(code);
     }
-  }, []);
+  }, [setUser]);
 
   useEffect(() => {
     const token = localStorage.getItem('@miguelsndc/my-unsplash:token');
@@ -63,7 +63,7 @@ const Home: NextPage = () => {
         setUser(res.data);
       });
     }
-  }, []);
+  }, [setUser]);
 
   return (
     <div>
