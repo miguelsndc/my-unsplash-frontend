@@ -19,7 +19,6 @@ export const PostImage = styled('img', {
 export const Overlay = styled('div', {
   background: '$black',
   inset: 0,
-  zIndex: 2,
   borderRadius: '$default',
   position: 'absolute',
   opacity: 0.25,
@@ -55,11 +54,11 @@ export const PostTitle = styled('h1', {
 
 export const PostContainer = styled('div', {
   position: 'relative',
-  [`& ${Overlay}, ${DeletePostButton}, ${PostTitle}`]: {
+  [`& ${DeletePostButton}`]: {
     display: 'none',
   },
   '&:hover': {
-    [`& ${Overlay}, ${DeletePostButton}, ${PostTitle}`]: {
+    [`& ${DeletePostButton}`]: {
       display: 'block',
     },
   },
