@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 import { useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { User, userState } from 'src/atoms/auth';
-import { postsState } from 'src/atoms/posts';
-import { Header, Post } from 'src/components/header';
+import { Post, postsState } from 'src/atoms/posts';
+import { Header } from 'src/components/header';
 import { PostList } from 'src/components/post-list';
 import { api } from 'src/services/api';
 

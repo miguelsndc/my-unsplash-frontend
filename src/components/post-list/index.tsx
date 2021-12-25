@@ -6,7 +6,7 @@ import { postsState } from 'src/atoms/posts';
 import { api } from 'src/services/api';
 import { Button } from '../button';
 import { Dialog } from '../dialog';
-import { Post } from '../header';
+import { Post } from '../../atoms/posts';
 import { Input } from '../input';
 import {
   Container,

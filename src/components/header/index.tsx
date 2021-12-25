@@ -24,20 +24,12 @@ import {
 } from './styles';
 import { api } from 'src/services/api';
 import { userState, signInUrl } from 'src/atoms/auth';
-import { postsState } from 'src/atoms/posts';
+import { Post, postsState } from 'src/atoms/posts';
 import { debounce } from 'src/utils/debounce';
 
 type PhotoFormData = {
   label: string;
   photoUrl: string;
-};
-
-export type Post = {
-  createdAt: string;
-  id: number;
-  label: string;
-  url: string;
-  userId: number;
 };
 
 class PhotoFormValidation {
