@@ -6,6 +6,7 @@ export const Container = styled('div', {
   maxWidth: 'calc(1368px + 1rem)',
   margin: '0 auto',
   marginTop: '2rem',
+  padding: '1rem',
 });
 
 export const PostImage = styled('img', {
