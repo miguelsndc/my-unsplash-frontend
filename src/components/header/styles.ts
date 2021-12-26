@@ -26,6 +26,12 @@ export const Logo = styled('div', {
     fontSize: '$sm',
     fontWeight: '$medium',
   },
+
+  '@media screen and (max-width: 600px)': {
+    'h1, h2': {
+      display: 'none',
+    },
+  },
 });
 
 export const LogoContent = styled('div', {
