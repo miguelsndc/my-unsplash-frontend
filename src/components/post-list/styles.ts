@@ -6,6 +6,7 @@ export const Container = styled('div', {
   maxWidth: 'calc(1368px + 1rem)',
   width: '95vw',
   margin: '0 auto',
+  display: 'block',
   marginTop: '2rem',
   padding: '1rem',
   '@media screen and (max-width: 600px)': {
@@ -63,6 +64,7 @@ export const PostTitle = styled('h1', {
 
 export const PostContainer = styled('div', {
   position: 'relative',
+  width: '100%',
   [`& ${DeletePostButton}`]: {
     display: 'none',
   },

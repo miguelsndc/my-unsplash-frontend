@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { RegisterOptions, useForm } from 'react-hook-form';
-import { IoMdSearch, IoMdAdd } from 'react-icons/io';
+import { IoMdAdd } from 'react-icons/io';
 import { BsGithub } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 import { Button } from '../button';
@@ -10,7 +10,6 @@ import { Dialog } from '../dialog';
 import { Input } from '../input';
 import {
   Container,
-  InputContainer,
   Logo,
   LogoContent,
   LogoHead,
@@ -25,7 +24,6 @@ import {
 import { api } from 'src/services/api';
 import { userState, signInUrl } from 'src/atoms/auth';
 import { Post, postsState } from 'src/atoms/posts';
-import { debounce } from 'src/utils/debounce';
 
 type PhotoFormData = {
   label: string;
@@ -60,7 +58,6 @@ export const Header = () => {
   const [dialogOpened, setDialogOpened] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
   const {
     register,
     handleSubmit,
@@ -94,21 +91,6 @@ export const Header = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleSearchByLabel = async (e: ChangeEvent<HTMLInputElement>) => {
-    const termToBeSearched = e.target.value;
-
-    setSearchTerm(termToBeSearched);
-
-    const fetchMatchingPosts = debounce(async () => {
-      const { data } = await api.get<Post[]>(
-        `/posts/search?q=${termToBeSearched}`
-      );
-      setPosts(data);
-    }, 750);
-
-    fetchMatchingPosts();
   };
 
   return (
@@ -166,17 +148,6 @@ export const Header = () => {
             <h2>devchallenges.io</h2>
           </div>
         </Logo>
-        <InputContainer>
-          <IoMdSearch size={28} />
-          <input
-            type='text'
-            name='search'
-            id='search'
-            placeholder='Search by name'
-            onChange={handleSearchByLabel}
-            value={searchTerm}
-          />
-        </InputContainer>
       </Content>
       {user ? (
         <Profile>

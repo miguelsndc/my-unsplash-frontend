@@ -61,32 +61,6 @@ export const Content = styled('div', {
   gap: '3rem',
 });
 
-export const InputContainer = styled('div', {
-  border: '1px solid $gray3',
-  borderRadius: '$default',
-  padding: '0.75rem',
-  display: 'flex',
-  alignItems: 'center',
-  boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.1)',
-
-  '&:focus-within': {
-    outline: 'auto',
-  },
-
-  input: {
-    background: 'none',
-    border: 'none',
-    fontFamily: '$default',
-    fontSize: '$md',
-    outline: 'none',
-  },
-
-  svg: {
-    fill: '$gray3',
-    marginRight: '0.85rem',
-  },
-});
-
 export const Field = styled('div', {
   '& + &': {
     marginTop: '0.75rem',

@@ -1,11 +1,14 @@
 import type { NextPage } from 'next';
-import { useEffect } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { IoMdSearch } from 'react-icons/io';
 import { useSetRecoilState } from 'recoil';
 import { User, userState } from 'src/atoms/auth';
 import { Post, postsState } from 'src/atoms/posts';
 import { Header } from 'src/components/header';
 import { PostList } from 'src/components/post-list';
 import { api } from 'src/services/api';
+import { InputContainer } from 'src/styles/home';
+import { debounce } from 'src/utils/debounce';
 
 type AuthenticationResponse = {
   token: string;
@@ -15,6 +18,22 @@ type AuthenticationResponse = {
 const Home: NextPage = () => {
   const setPosts = useSetRecoilState(postsState);
   const setUser = useSetRecoilState(userState);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchByLabel = async (e: ChangeEvent<HTMLInputElement>) => {
+    const termToBeSearched = e.target.value;
+
+    setSearchTerm(termToBeSearched);
+
+    const fetchMatchingPosts = debounce(async () => {
+      const { data } = await api.get<Post[]>(
+        `/posts/search?q=${termToBeSearched}`
+      );
+      setPosts(data);
+    }, 750);
+
+    fetchMatchingPosts();
+  };
 
   useEffect(() => {
     api.get<Post[]>('/posts').then(({ data }) => {
@@ -68,6 +87,17 @@ const Home: NextPage = () => {
   return (
     <div>
       <Header />
+      <InputContainer>
+        <IoMdSearch size={28} />
+        <input
+          type='text'
+          name='search'
+          id='search'
+          placeholder='Search by name'
+          onChange={handleSearchByLabel}
+          value={searchTerm}
+        />
+      </InputContainer>
       <main>
         <PostList />
       </main>
